@@ -14,6 +14,7 @@ chunk = 512  # 2^12 samples for buffer
 record_secs = 2  # seconds to record
 dev_index = 4  # device index found by p.get_device_info_by_index(ii)
 fldr_name = datetime.now().isoformat(timespec='minutes')
+txt_name = fldr_name + "/results.txt"
 os.mkdir(fldr_name)
 
 audio = pyaudio.PyAudio()  # create pyaudio instantiation
@@ -32,7 +33,7 @@ def goertzel(samples, sample_rate, *freqs):
     The function returns 2 arrays as follows: first being the actual frequenies, and then the coefficients as '(real part, imag part, power)'.
     Power is good enough for detection purposes. 
 
-    Not used as matched filtering is more effective. 
+    ***Not used as matched filtering is more effective.*** 
 
     """
     window_size = len(samples)
@@ -182,10 +183,13 @@ def pseudorange(timings, rec_pose_init):
     return rec_pos_est
 
 def NormalizeData(data):
+    """
+    0-1 normalization of matched filter output
+    """
     return (data - np.min(data)) / (np.max(data) - np.min(data))
 
 
-def reader(temp_name, template1, template2, template3, template4):
+def reader(temp_name, txt_name,template1):
 
     """
     Function to read recorded wav files and start position estimation
@@ -216,15 +220,17 @@ def reader(temp_name, template1, template2, template3, template4):
 
     print(rec_pose_new)
     #print("finished pseudorange")
+    with codecs.open(txt_name, "a", "utf-8") as my_file:  
+        my_file.write(str(rec_pose_new) + "\n")
     rec_pose_init = rec_pose_new
 
 
 def main():
     
-    template1, sr = sf.read('templates/temp1q.wav', dtype='float32')
-    template2, sr = sf.read('templates/temp2qd.wav', dtype='float32')
-    template3, sr = sf.read('templates/temp3q.wav', dtype='float32')
-    template4, sr = sf.read('templates/temp4qd.wav', dtype='float32')
+    template1, sr = sf.read('templates/10ms_template.wav', dtype='float32')
+    # template2, sr = sf.read('templates/temp2qd.wav', dtype='float32')
+    # template3, sr = sf.read('templates/temp3q.wav', dtype='float32')
+    # template4, sr = sf.read('templates/temp4qd.wav', dtype='float32')
     
 
     count = 0
@@ -239,7 +245,7 @@ def main():
                 print(t)
                 flag = True
                # time.sleep(0.2)
-                reader(temp_name, template1, template2, template3, template4)
+                reader(temp_name, txt_name,template1)
                 
 
             elif (t[1] != '9'):
