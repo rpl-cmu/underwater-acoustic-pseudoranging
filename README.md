@@ -34,7 +34,7 @@ The system runs on a raspberry pi using Python3. The following non-default packa
 * 3D printed water tight boxes are used to house computation with the microphone top port on top, covered by a thin adhesive film, 1-2mm thick. The microphone has to be sealed with silicon glue to ensure water tightness. 
 
 A cross sectional view of how we prepared the MEMS microphone for waterproofness is shown below.
-<img src="/images/cross-section.png" alt="cross-section" style="width:200px;"/>
+<img src="/images/cross-section.png" alt="cross-section" style="width:400px;"/>
 
 <!-- ![cross section](/images/cross-section.png) -->
 
