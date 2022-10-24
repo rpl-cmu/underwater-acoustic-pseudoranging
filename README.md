@@ -2,11 +2,11 @@
 
 ## Acoustic Localization and Communication Using a MEMS Microphone for Low-cost and Low-power Bio-inspired Underwater Robots
 
-[View the paper here.](https://arxiv.org/abs/2210.01089)
-
-![GDOP and Results](/images/IROSGif3.gif)
+![GDOP and Results](/images/IROSGif3-min.gif)
 
 This repository provides the code used to perform acoustic pseudoranging, as well as a few notes on hardware preparation and observations for future iterations. 
+[A copy of the paper can be found here.](https://arxiv.org/abs/2210.01089)
+
 
 ### Dependencies
 
@@ -34,7 +34,9 @@ The system runs on a raspberry pi using Python3. The following non-default packa
 * 3D printed water tight boxes are used to house computation with the microphone top port on top, covered by a thin adhesive film, 1-2mm thick. The microphone has to be sealed with silicon glue to ensure water tightness. 
 
 A cross sectional view of how we prepared the MEMS microphone for waterproofness is shown below.
-![cross section](/images/cross-section.png)
+<img src="/images/cross-section.png" alt="cross-section" style="width:200px;"/>
+
+<!-- ![cross section](/images/cross-section.png) -->
 
 More details on MEMS microphone waterpoofing using thin membranes and its effects can be found in this helpful [pdf link](https://invensense.tdk.com/wp-content/uploads/2015/02/Recommendations-for-Sealing-InvenSense-Bottom-Port.pdf) from invensense here.
 
