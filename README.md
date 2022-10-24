@@ -7,6 +7,8 @@
 This repository provides the code used to perform acoustic pseudoranging, as well as a few notes on hardware preparation and observations for future iterations. 
 [A copy of the paper can be found here.](https://arxiv.org/abs/2210.01089)
 
+##### Note: 
+This page is still being updated gradually with more useful information. Come again later for an updated version! (10/24/2022)
 
 ### Dependencies
 
